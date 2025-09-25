@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[RequireComponent(typeof(Collider2D))]
-public class Trash : MonoBehaviour
+public class HasItem : MonoBehaviour
 {
+    public List<Item> items;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        items = new List<Item>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,16 +23,8 @@ public class Trash : MonoBehaviour
         Item item = other.GetComponent<Item>();
         if (item != null)
         {
-            item.isTrash = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        Item item = other.GetComponent<Item>();
-        if (item != null)
-        {
-            item.isTrash = false;
+            // ‰¼
+            item.DestroySelf();
         }
     }
 }
