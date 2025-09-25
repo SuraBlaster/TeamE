@@ -41,4 +41,6 @@ public class Health : MonoBehaviour
     {
         is_invincible = invincible;
     }
+
+    public float GetCurrentHealth() { return current_health; }
 }

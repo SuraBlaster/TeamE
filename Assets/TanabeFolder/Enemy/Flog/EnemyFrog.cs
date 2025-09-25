@@ -23,6 +23,8 @@ public class EnemyFrog : EnemyBase
     // Update is called once per frame
     void Update()
     {
+        Death();
+
         current_time += Time.deltaTime;
         animator.SetBool("IsMove", false);
         if (current_time > move_timer)
@@ -31,7 +33,7 @@ public class EnemyFrog : EnemyBase
             Vector2 distance = ToPlayer();
             Vector2 movement = distance.normalized * move_speed * Time.deltaTime;
             transform.Translate(movement);
-
+            LeftorRight(movement.x);
             if (current_time > move_timer + move_timer)
             {
                 current_time = 0.0f;

@@ -16,9 +16,9 @@ public class EnemyManager : MonoBehaviour
     public Transform player_transform;
 
     [SerializeField]
-    private Vector2 spawn_range_x = Vector2.zero;
+    private Vector2 spawn_range_max = Vector2.zero;
     [SerializeField]
-    private Vector2 spawn_range_y = Vector2.zero;
+    private Vector2 spawn_range_min = Vector2.zero;
 
     float current_time = 0.0f;
     [SerializeField]
@@ -88,8 +88,8 @@ public class EnemyManager : MonoBehaviour
     {
         // プレイヤーから(spawn_range_x,spawn_range_y)離れた位置に生成
         return new Vector3(
-            player_transform.position.x + UnityEngine.Random.Range(spawn_range_x.x, spawn_range_x.y),
-            player_transform.position.y + UnityEngine.Random.Range(spawn_range_y.x, spawn_range_y.y),
+            player_transform.position.x + UnityEngine.Random.Range(spawn_range_min.x, spawn_range_max.y),
+            player_transform.position.y + UnityEngine.Random.Range(spawn_range_min.x, spawn_range_min.y),
             0);
     }
 }

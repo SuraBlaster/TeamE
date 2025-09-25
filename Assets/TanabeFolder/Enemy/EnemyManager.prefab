@@ -46,8 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypes:
   - enemyPrefab: {fileID: 6466065936059205753, guid: 101300590958af34cbdc0045c3d1a0c9, type: 3}
+    spawnWeight: 45
+  - enemyPrefab: {fileID: 1774347822984620997, guid: afb30abdbcd440f4482ebb285bd1e3d2, type: 3}
+    spawnWeight: 45
+  - enemyPrefab: {fileID: 4634416554470100514, guid: e7c50de0391372545a8c0385fc3c9370, type: 3}
     spawnWeight: 10
   player_transform: {fileID: 0}
-  spawn_range_x: {x: -3, y: 3}
-  spawn_range_y: {x: -3, y: 3}
+  spawn_range_max: {x: 5, y: 5}
+  spawn_range_min: {x: -5, y: -5}
   seconds: 0.5

@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_transform: {fileID: 0}
+  health: {fileID: 5568993013418396406}
+  death_effect: {fileID: 0}
   move_speed: 3.5
 --- !u!114 &5568993013418396406
 MonoBehaviour:
