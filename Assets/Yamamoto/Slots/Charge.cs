@@ -22,8 +22,8 @@ public class Charge : MonoBehaviour
         Item item = other.GetComponent<Item>();
         if (item != null)
         {
-            item.isOverTrash = true;
-            item.isOverCharge = true;
+            item.isTrash = true;
+            item.isCharge = true;
         }
     }
 
@@ -32,8 +32,8 @@ public class Charge : MonoBehaviour
         Item item = other.GetComponent<Item>();
         if (item != null)
         {
-            item.isOverTrash = false;
-            item.isOverCharge = false;
+            item.isTrash = false;
+            item.isCharge = false;
         }
     }
 }
