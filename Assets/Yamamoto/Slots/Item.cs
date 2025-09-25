@@ -82,8 +82,7 @@ public class Item : MonoBehaviour
 
         if (takeWeapon)
         {
-            //Destroy(GetComponent<Item>());
-            Destroy(gameObject);
+            Destroy(GetComponent<Item>());
         }
 
         if (isTrash)
