@@ -16,11 +16,9 @@ public class Projectile : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            Enemy enemy = collision.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(damage);
-            }
+            Health health = GetComponent<Health>();
+
+            health.TakeDamage(damage);
 
             Destroy(gameObject); // ìñÇΩÇ¡ÇΩÇÁè¡Ç¶ÇÈ
         }
