@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpider : EnemyBase
 {
+    public override string GetName() { return "Spider"; }
+
     // Start is called before the first frame update
     void Start()
     {

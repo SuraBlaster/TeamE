@@ -18,6 +18,8 @@ public class EnemyBase : MonoBehaviour
     protected float move_speed = 5.0f;
 
 
+    public virtual string GetName() { return "Default"; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class EnemyBase : MonoBehaviour
             if (death_effect != null)
                 Instantiate(death_effect, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            manager.AddCount(GetName());
         }
     }
 

@@ -12,7 +12,7 @@ public class EnemyFrog : EnemyBase
     [SerializeField]
     private Animator animator;
 
-    bool flg = false;
+    public override string GetName() { return "Frog"; }
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +34,7 @@ public class EnemyFrog : EnemyBase
             Vector2 movement = distance.normalized * move_speed * Time.deltaTime;
             transform.Translate(movement);
             LeftorRight(movement.x);
-            if (current_time > move_timer + move_timer)
+            if (current_time > move_timer + stop_timer)
             {
                 current_time = 0.0f;
             }
