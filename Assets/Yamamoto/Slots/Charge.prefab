@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1393356650050274214}
   - component: {fileID: 3194405676203880605}
   - component: {fileID: 934702435816241443}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Charge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122244797687312640}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.75, y: -3.37, z: 0.02938911}
+  m_LocalRotation: {x: 0, y: 0, z: 0.008726558, w: 0.999962}
+  m_LocalPosition: {x: -8.75, y: -3.37, z: 0}
   m_LocalScale: {x: 12, y: 14, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1}
 --- !u!212 &1393356650050274214
 SpriteRenderer:
   m_ObjectHideFlags: 0

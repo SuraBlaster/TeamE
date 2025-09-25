@@ -6,7 +6,6 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     private Slot slot;
-    private HasItem hasItem;
     private Camera camera;
     private bool isDragging = false;
     private Vector3 offset;
@@ -14,6 +13,7 @@ public class Item : MonoBehaviour
 
     [HideInInspector] public bool isTrash = false;
     [HideInInspector] public bool isCharge = false;
+    [HideInInspector] public bool takeWeapon = false;
     void Start()
     {
         camera = Camera.main;
@@ -23,6 +23,11 @@ public class Item : MonoBehaviour
             slot = FindObjectOfType<Slot>();
         }
         slot.AddItem(this);
+    }
+
+    void Update()
+    {
+        
     }
 
     public IEnumerator MoveToPosition(Vector3 targetPos)
@@ -37,6 +42,8 @@ public class Item : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+
+        targetPos.z = -2;
 
         transform.position = targetPos;
         originalPos = targetPos;
@@ -55,7 +62,7 @@ public class Item : MonoBehaviour
     {
         isDragging = true;
         Vector3 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
+        mousePos.z = -2;
         offset = transform.position - mousePos;
     }
 
@@ -64,7 +71,7 @@ public class Item : MonoBehaviour
         if (isDragging)
         {
             Vector3 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0;
+            mousePos.z = -2;
             transform.position = mousePos + offset;
         }
     }
@@ -72,6 +79,12 @@ public class Item : MonoBehaviour
     void OnMouseUp()
     {
         isDragging = false;
+
+        if (takeWeapon)
+        {
+            //Destroy(GetComponent<Item>());
+            Destroy(gameObject);
+        }
 
         if (isTrash)
         {
