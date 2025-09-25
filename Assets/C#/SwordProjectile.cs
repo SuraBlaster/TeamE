@@ -13,8 +13,9 @@ public class SwordProjectile2D : Weapon
         GameObject nearestEnemy = FindNearestEnemy();
         if (nearestEnemy == null) return;
 
-        // Œ•‚ğ¶¬
-        GameObject proj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        Vector3 spawnPos = player.transform.position;
+
+        GameObject proj = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
 
         // ”ò‚Î‚·ˆ—
         Vector2 dir = (nearestEnemy.transform.position - transform.position).normalized;

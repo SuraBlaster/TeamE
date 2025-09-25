@@ -40,6 +40,16 @@ public class PlayerController : MonoBehaviour
         // オブジェクトを移動させる
         Vector2 movement = new Vector2(axiz_x, axiz_y) * moveSpeed * Time.deltaTime;
         transform.Translate(movement);
+
+        // オブジェクトを反転させる
+        if(axiz_x > 0)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else if(axiz_x < 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
     }
 }
 

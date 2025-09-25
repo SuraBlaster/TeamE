@@ -6,13 +6,14 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     private Slot slot;
+    private HasItem hasItem;
     private Camera camera;
     private bool isDragging = false;
     private Vector3 offset;
     private Vector3 originalPos;
 
-    [HideInInspector] public bool isOverTrash = false;
-    [HideInInspector] public bool isOverCharge = false;
+    [HideInInspector] public bool isTrash = false;
+    [HideInInspector] public bool isCharge = false;
     void Start()
     {
         camera = Camera.main;
@@ -41,6 +42,10 @@ public class Item : MonoBehaviour
         originalPos = targetPos;
     }
 
+    public void SetSlot(Slot slot)
+    {
+        this.slot = slot;
+    }
     public void DestroySelf()
     {
         Destroy(gameObject);
@@ -68,9 +73,9 @@ public class Item : MonoBehaviour
     {
         isDragging = false;
 
-        if (isOverTrash)
+        if (isTrash)
         {
-            if (isOverCharge)
+            if (isCharge)
             {
                 slot.AddChargePoint();
             }
