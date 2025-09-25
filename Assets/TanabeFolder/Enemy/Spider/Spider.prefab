@@ -201,5 +201,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_transform: {fileID: 0}
   health: {fileID: 2504042851580018382}
-  death_effect: {fileID: 0}
+  death_effect: {fileID: 6027790224087261354, guid: 35ddc6579bb0c7240bfbeed409d1921d, type: 3}
   move_speed: 2
