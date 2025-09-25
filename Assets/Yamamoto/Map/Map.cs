@@ -47,7 +47,6 @@ public class Map : MonoBehaviour
         {
             chunks.Remove(key);
         }
-
     }
 
     Vector2Int WorldToChunkPos(Vector3 pos)
@@ -59,7 +58,7 @@ public class Map : MonoBehaviour
 
     void SpawnChunk(Vector2Int coord)
     {
-        Vector3 worldPos = new Vector3(coord.x * chunkSize, coord.y * chunkSize, 0);
+        Vector2 worldPos = new Vector2(coord.x * chunkSize, coord.y * chunkSize);
         var chunk = Instantiate(chunkPrefab, worldPos, Quaternion.identity);
         chunks.Add(coord, chunk);
     }
