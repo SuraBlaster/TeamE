@@ -328,10 +328,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5871718520624333994, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
       propertyPath: player_transform
       value: 
       objectReference: {fileID: 2059770149}
+    - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
+      propertyPath: enemyTypes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
+      propertyPath: enemyTypes.Array.data[1].enemyPrefab
+      value: 
+      objectReference: {fileID: 1774347822984620997, guid: afb30abdbcd440f4482ebb285bd1e3d2, type: 3}
+    - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
+      propertyPath: enemyTypes.Array.data[1].spawnWeight
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

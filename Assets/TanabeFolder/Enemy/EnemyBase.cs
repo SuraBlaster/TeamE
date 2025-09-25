@@ -11,7 +11,7 @@ public class EnemyBase : MonoBehaviour
     private Transform player_transform;
 
     [SerializeField]
-    private float move_speed = 5.0f;
+    protected float move_speed = 5.0f;
 
 
     // Start is called before the first frame update
@@ -22,18 +22,9 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveToPlayer();
     }
 
-    protected void MoveToPlayer()
-    {
-        Vector2 distance = player_transform.position- transform.position;
-
-        // オブジェクトを移動させる
-        Vector2 movement = distance.normalized * move_speed * Time.deltaTime;
-        transform.Translate(movement);
-    }
-
+    protected Vector2 ToPlayer() { return player_transform.position - transform.position; }
     public void SetPlayerTransform(Transform transform) { player_transform = transform; }
     public void SetManager(EnemyManager manager) { this.manager = manager; }
 }
