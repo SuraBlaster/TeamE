@@ -43,4 +43,5 @@ public class Health : MonoBehaviour
     }
 
     public float GetCurrentHealth() { return current_health; }
+    public float NormalizeHealth() { return current_health/max_health; }
 }

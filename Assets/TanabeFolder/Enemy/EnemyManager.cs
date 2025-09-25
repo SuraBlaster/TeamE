@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class EnemyManager : MonoBehaviour
 
     public List<EnemyType> enemyTypes;
     public Transform player_transform;
+
+    Dictionary<string, int> enemy_count;
 
     [SerializeField]
     private Vector2 spawn_range_max = Vector2.zero;
@@ -47,7 +50,7 @@ public class EnemyManager : MonoBehaviour
         if (selectedEnemy != null)
         {
             // 選択された敵を生成
-            GameObject newEnemy = Instantiate(selectedEnemy.enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity);
+            GameObject newEnemy = Instantiate(selectedEnemy.enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity, transform);
 
             // 基底クラスを使って、すべての敵に共通の振る舞いを指示
             EnemyBase enemyComponent = newEnemy.GetComponent<EnemyBase>();
@@ -92,4 +95,34 @@ public class EnemyManager : MonoBehaviour
             player_transform.position.y + UnityEngine.Random.Range(spawn_range_min.x, spawn_range_min.y),
             0);
     }
+
+    //死亡カウント
+    public void AddCount(string name)
+    {
+        if (enemy_count.ContainsKey(name))
+        {
+            // キーが存在する場合、値を1増やす
+            enemy_count[name]++;
+        }
+        else
+        {
+            // キーが存在しない場合、新しく追加する
+            enemy_count.Add(name, 1);
+        }
+    }
+
+    //死亡数取得
+    public int GetCount(string name) 
+    {
+        // キーが存在するか確認
+        if (enemy_count.ContainsKey(name))
+        {
+            // 存在する場合は値を返す
+            return enemy_count[name];
+        }
+        // 存在しない場合は0を返す
+        return 0;
+    }
+
+    public void ClearCount() { enemy_count.Clear(); }
 }
