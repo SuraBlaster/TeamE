@@ -35,9 +35,10 @@ public class OrbitWeapon : Weapon
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        Health enemy = collision.GetComponent<Health>();
+        if (enemy != null)
         {
-            Debug.Log($"{collision.name} に {baseDamage} ダメージ！（Orbit）");
+            enemy.TakeDamage(baseDamage);
         }
     }
 }
