@@ -17,11 +17,15 @@ public class SwordProjectile2D : Weapon
 
         GameObject proj = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
 
-        // 飛ばす処理
-        Vector2 dir = (nearestEnemy.transform.position - transform.position).normalized;
+        // 進行方向
+        Vector2 dir = (nearestEnemy.transform.position - spawnPos).normalized;
         proj.GetComponent<Rigidbody2D>().velocity = dir * speed;
 
-        // ダメージ設定をProjectileへ渡す
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 45f;
+        proj.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        // ダメージ設定
         Projectile p = proj.GetComponent<Projectile>();
         if (p != null) p.damage = baseDamage;
     }

@@ -18,14 +18,19 @@ public class OrbitWeapon : Weapon
     void Update()
     {
 
-        if (player == null) return;
-
         angle += speed * Time.deltaTime;
 
         float x = Mathf.Cos(angle) * radius;
         float y = Mathf.Sin(angle) * radius;
 
-        transform.position = player.transform.position + new Vector3(x, y, 0);
+        Vector3 newPos = player.transform.position + new Vector3(x, y, 0);
+        transform.position = newPos;
+
+        // プレイヤーから外向きの方向を計算
+        Vector2 dir = (newPos - (Vector3)player.transform.position).normalized;
+
+        float rotationZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 45f;
+        transform.rotation = Quaternion.Euler(0, 0, rotationZ);
     }
 
     protected override void Fire()
