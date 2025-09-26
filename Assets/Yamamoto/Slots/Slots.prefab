@@ -115,6 +115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Charge
       objectReference: {fileID: 0}
+    - target: {fileID: 934702435816241443, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
+      propertyPath: chargePoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6001757595446041389, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
