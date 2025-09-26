@@ -63,6 +63,7 @@ public class EnemyManager : MonoBehaviour
                 enemyComponent.SetManager(this);
                 enemyComponent.SetPlayerTransform(player_transform);
                 enemyComponent.score=score;
+                enemyComponent.SetOldHealth(enemyComponent.GetComponent<Health>().GetCurrentHealth());
             }
         }
         
