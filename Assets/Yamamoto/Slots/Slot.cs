@@ -128,7 +128,7 @@ public class Slot : MonoBehaviour
         Item baseItem = items[baseIndex];
         Item targetItem = items[targetIndex];
 
-        baseItem.count = 2 * baseItem.count + targetItem.count;
+        baseItem.count = baseItem.count + targetItem.count;
 
         baseItem.count = Mathf.Min(baseItem.count, 999);
 
