@@ -12,7 +12,7 @@ public class AxeWeapon : Weapon
         if (player == null || axePrefab == null) return;
 
         // ランダム方向（360度）
-        float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+        float angle = Random.Range(45f,135f) * Mathf.Deg2Rad;
         Vector2 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
         // 斧を生成

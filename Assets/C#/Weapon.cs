@@ -28,14 +28,14 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Health enemy = collision.gameObject.GetComponent<Health>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(baseDamage);
-        }
-    }
+    //protected void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Health enemy = collision.gameObject.GetComponent<Health>();
+    //    if (enemy != null)
+    //    {
+    //        enemy.TakeDamage(baseDamage);
+    //    }
+    //}
 
     // îhê∂ÉNÉâÉXÇ≤Ç∆ÇÃçUåÇèàóù
     protected abstract void Fire();
