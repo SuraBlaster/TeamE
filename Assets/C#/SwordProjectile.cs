@@ -13,12 +13,10 @@ public class SwordProjectile2D : Weapon
         GameObject nearestEnemy = FindNearestEnemy();
         if (nearestEnemy == null) return;
 
-        player= FindObjectOfType<PlayerController>();
-
-        GameObject proj = Instantiate(projectilePrefab, player.transform.position, Quaternion.identity);
+        GameObject proj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
         // êiçsï˚å¸
-        Vector2 dir = (nearestEnemy.transform.position - player.transform.position).normalized;
+        Vector2 dir = (nearestEnemy.transform.position - transform.position).normalized;
         proj.GetComponent<Rigidbody2D>().velocity = dir * speed;
 
 
