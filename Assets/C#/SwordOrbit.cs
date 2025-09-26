@@ -8,7 +8,8 @@ public class OrbitWeapon : Weapon
 {
     public float radius = 2f;
     public float speed = 2f;
-    public float startAngle = 0f; 
+    public float startAngle = 0f;
+    public float impalse = 1.0f;
     private float angle; void Start() 
     { 
         angle = startAngle * Mathf.Deg2Rad;
@@ -31,10 +32,18 @@ public class OrbitWeapon : Weapon
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Health enemy = other.gameObject.GetComponent<Health>();
-        if (enemy != null)
+        if(other.gameObject.CompareTag("Enemy"))
         {
-            enemy.TakeDamage(baseDamage);
+            Health enemy = other.gameObject.GetComponent<Health>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(baseDamage);
+
+            }
+            Vector2 direction = (-transform.position + other.transform.position).normalized;
+
+            other.attachedRigidbody.AddForce(direction * impalse);
         }
+        
     }
 }
