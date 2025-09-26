@@ -156,7 +156,7 @@ MonoBehaviour:
   count: 1
   itemId: 1
   charge: {fileID: 934702435816241443, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
-  weaponPrefab: {fileID: 1054526293726085413, guid: 8b7f2c05ac0567c4fb73fe9bf0325597, type: 3}
+  weaponPrefab: {fileID: 6399482194636400121, guid: 74d1e57acf05c504bb3c433403ecb72d, type: 3}
   countText: {fileID: 4726043304227983492}
 --- !u!222 &5894423744148481059
 CanvasRenderer:
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a01f5b74ad536f24e86c74fdd669c680, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

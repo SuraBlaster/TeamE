@@ -15,7 +15,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public int count = 1;
     public int itemId;
     public Charge charge;
-    public Weapon weaponPrefab;
+    public GameObject weaponPrefab;
     public TextMeshProUGUI countText;
 
     void Start()
@@ -162,7 +162,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         else if(playerFlag)
         {
-            Instantiate(weaponPrefab, player.transform.position, Quaternion.identity);
+            Instantiate(weaponPrefab, player.transform.position, Quaternion.identity, player.transform);
             Destroy(gameObject);
         }
         else
