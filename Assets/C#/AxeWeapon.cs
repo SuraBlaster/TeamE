@@ -9,14 +9,13 @@ public class AxeWeapon : Weapon
 
     protected override void Fire()
     {
-        if (player == null || axePrefab == null) return;
 
-        // ランダム方向（360度）
+        // ランダム方向（90度）
         float angle = Random.Range(45f,135f) * Mathf.Deg2Rad;
         Vector2 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
         // 斧を生成
-        GameObject axe = Instantiate(axePrefab, player.transform.position, Quaternion.identity);
+        GameObject axe = Instantiate(axePrefab, transform.position, Quaternion.identity);
 
         // Projectile 初期化
         Rigidbody2D rb = axe.GetComponent<Rigidbody2D>();
