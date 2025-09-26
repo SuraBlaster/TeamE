@@ -8,7 +8,7 @@ public class Slot : MonoBehaviour
     public Vector2 itemSpacePos;
     //public int chargePoint;
 
-    private const int MaxWidth = 8;
+    private const int MaxWidth = 7;
     private Item[] items = new Item[MaxWidth];
 
     // Start is called before the first frame update
