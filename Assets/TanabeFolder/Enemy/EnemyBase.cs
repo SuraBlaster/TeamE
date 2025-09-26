@@ -29,9 +29,13 @@ public class EnemyBase : MonoBehaviour
     {
         if (health.GetCurrentHealth() <= 0)
         {
+           
             if (death_effect != null)
-                Instantiate(death_effect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            {
+                GameObject effect = Instantiate(death_effect, transform.position, Quaternion.identity);
+                effect.GetComponent<ParticleSystem>().Play();
+            }
+                Destroy(gameObject);
             manager.AddCount(GetName());
         }
     }
