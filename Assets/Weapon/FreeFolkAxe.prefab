@@ -163,8 +163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   lifeTime: 5
+  throwForce: 10
+  shockwaveRadius: 0.01
   shockwavePrefab: {fileID: 6891452591756627108, guid: 1d04fa21029c12d448b65bd3116c740a, type: 3}
-  shockwaveRadius: 2
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
