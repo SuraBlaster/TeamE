@@ -77,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1046559593
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -105,7 +105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charge: {fileID: 934702435816241443, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
   weaponPrefab: {fileID: 1054526293726085413, guid: 8b7f2c05ac0567c4fb73fe9bf0325597, type: 3}
-  player: {fileID: 0}
 --- !u!222 &-6975480453623416258
 CanvasRenderer:
   m_ObjectHideFlags: 0

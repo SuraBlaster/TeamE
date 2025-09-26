@@ -60,7 +60,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1046559593
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3417426420580732287
@@ -118,6 +118,14 @@ PrefabInstance:
     - target: {fileID: 934702435816241443, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
       propertyPath: chargePoint
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393356650050274214, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393356650050274214, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1046559593
       objectReference: {fileID: 0}
     - target: {fileID: 6001757595446041389, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
       propertyPath: m_Pivot.x
@@ -308,6 +316,14 @@ PrefabInstance:
     - target: {fileID: 2632519188079702665, guid: db280568199fa244bb71f890f25bd1c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658702532537702563, guid: db280568199fa244bb71f890f25bd1c4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658702532537702563, guid: db280568199fa244bb71f890f25bd1c4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1046559593
       objectReference: {fileID: 0}
     - target: {fileID: 6991238023815114175, guid: db280568199fa244bb71f890f25bd1c4, type: 3}
       propertyPath: m_Name
