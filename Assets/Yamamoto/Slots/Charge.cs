@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
 public class Charge : MonoBehaviour
 {
+    public int chargePoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,23 +18,8 @@ public class Charge : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void AddChargePoint()
     {
-        Item item = other.GetComponent<Item>();
-        if (item != null)
-        {
-            item.isTrash = true;
-            item.isCharge = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        Item item = other.GetComponent<Item>();
-        if (item != null)
-        {
-            item.isTrash = false;
-            item.isCharge = false;
-        }
+        chargePoint += 1;
     }
 }

@@ -6,7 +6,7 @@ public class Slot : MonoBehaviour
 {
     public Vector2 startItemPos;
     public Vector2 itemSpacePos;
-    public int chargePoint;
+    //public int chargePoint;
 
     private const int MaxWidth = 8;
     private Item[] items = new Item[MaxWidth];
@@ -84,8 +84,8 @@ public class Slot : MonoBehaviour
         }
     }
 
-    public void AddChargePoint()
-    {
-        chargePoint += 1;
-    }
+    //public void AddChargePoint()
+    //{
+    //    chargePoint += 1;
+    //}
 }
