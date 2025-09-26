@@ -29,6 +29,8 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
+        enemy_count = new Dictionary<string, int>();
+
         // 一定時間ごとに敵を生成
         InvokeRepeating("SpawnRandomEnemy", 3f, 3f);
     }
@@ -114,6 +116,7 @@ public class EnemyManager : MonoBehaviour
     //死亡数取得
     public int GetCount(string name) 
     {
+        if (enemy_count == null) return 0;
         // キーが存在するか確認
         if (enemy_count.ContainsKey(name))
         {
@@ -124,5 +127,5 @@ public class EnemyManager : MonoBehaviour
         return 0;
     }
 
-    public void ClearCount() { enemy_count.Clear(); }
+    public void ClearCount() { if(enemy_count!=null)enemy_count.Clear(); }
 }

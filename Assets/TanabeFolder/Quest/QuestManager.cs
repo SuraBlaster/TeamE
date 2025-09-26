@@ -2,11 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 using static EnemyManager;
 using static QuestManager;
 
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField]
+    float start_time = 10.0f;
+    float current_time;
+
     // クエストの種類ごとにプレハブと生成位置を格納する
     [Serializable]
     public class QuestType
@@ -17,10 +23,33 @@ public class QuestManager : MonoBehaviour
     public List<QuestType> questTypes;
 
     [SerializeField]
+    GameObject eneable_object;
+
+    [SerializeField]
     EnemyManager enemy_manager;
+    [SerializeField]
+    GameObject mouseUi;
+    [SerializeField]
+    GameObject spiderUi;
+    [SerializeField]
+    GameObject frogUi;
+
 
     //現在クエスト
     QuestBase current_quest;
+
+    //タイマーUI
+    [SerializeField]
+    UnityEngine.UI.Image timer_image;
+    [SerializeField]
+    Text timer_text;
+
+
+    //クエストUI
+    [SerializeField]
+    Text current_count;
+    [SerializeField]
+    Text goal_count;
 
     //クエスト状態
     public enum QuestState
@@ -30,7 +59,7 @@ public class QuestManager : MonoBehaviour
         Failed,
         Suceeded,
     }
-    QuestState questState;
+    QuestState questState=QuestState.None;
 
     // Start is called before the first frame update
     void Start()
@@ -41,14 +70,61 @@ public class QuestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        current_time += Time.deltaTime;
+        if (start_time < current_time && questState == QuestState.None)
+        {
+            StartQuest();
+        }
 
+        //UI操作
+        if (current_quest != null)
+        {
+            eneable_object.SetActive(true);
+
+            //タイマー系
+            {
+                timer_image.fillAmount = 1.0f - current_quest.GetNormalizeTime();
+                int num = Mathf.FloorToInt(current_quest.GetLimitedTime() - current_quest.GetCurrentTime());
+                if (num < 10)
+                    timer_text.text = string.Format(" {0}", num);
+                else
+                    timer_text.text = string.Format("{0}", num);
+            }
+
+            //クエスト系
+            {
+                string name = current_quest.GetName();
+                if (name == "Flog") frogUi.SetActive(true);
+                if (name == "Spider") spiderUi.SetActive(true);
+                if (name == "Mouse") mouseUi.SetActive(true);
+
+                int goalnum = current_quest.GetGoalCount();
+                if (goalnum < 10)
+                    goal_count.text = string.Format(" {0}", goalnum);
+                else
+                    goal_count.text = string.Format("{0}", goalnum);
+                int currentnum = enemy_manager.GetCount(name);
+                if (currentnum < 10)
+                    current_count.text = string.Format(" {0}", Mathf.FloorToInt(currentnum));
+                else
+                    current_count.text = string.Format("{0}", Mathf.FloorToInt(currentnum));
+            }
+        }
+        else
+        {
+            eneable_object.SetActive(false);
+            frogUi.SetActive(false);
+            spiderUi.SetActive(false);
+            mouseUi.SetActive(false);
+        }
     }
 
     public void StartQuest()
     {
         enemy_manager.ClearCount();
         questState = QuestState.Running;
-        current_quest = SelectRandomQuestType().quest_prefub.GetComponent<QuestBase>();
+        GameObject newQuest = Instantiate(SelectRandomQuestType().quest_prefub, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, transform);
+        current_quest = newQuest.GetComponent<QuestBase>();
         current_quest.SetQuestManager(this);
     }
 

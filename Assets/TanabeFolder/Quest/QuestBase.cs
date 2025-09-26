@@ -13,7 +13,7 @@ public class QuestBase : MonoBehaviour
 
     //対象
     [SerializeField]
-    EnemyBase enemy;
+    string enemy_name;
 
     //クエストのリミット時間
     [SerializeField]
@@ -38,7 +38,7 @@ public class QuestBase : MonoBehaviour
         bool finalize = false;
         
         //目標数達成時、成功を返す
-        if (manager.GetCount(enemy.GetName()) > goal_count)
+        if (manager.GetCount(enemy_name) >= goal_count)
         {
             manager.SetQuestState(QuestManager.QuestState.Suceeded);
             finalize = true;
@@ -61,4 +61,6 @@ public class QuestBase : MonoBehaviour
     public float GetCurrentTime() { return current_time; }
     public float GetLimitedTime() { return limit_timer; }
     public float GetNormalizeTime() { return current_time / limit_timer; }
+    public int GetGoalCount() { return goal_count; }
+    public string GetName() { return enemy_name; }
 }
