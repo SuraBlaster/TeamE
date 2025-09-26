@@ -3,11 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  - Weapon
+  tags:
   - Enemy
-  - Ground
   - QuestUI
-  - ScoreUI
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -44,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2361139279
+    locked: 0
+  - name: tsts
+    uniqueID: 3294721629
     locked: 0
