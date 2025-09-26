@@ -5,32 +5,17 @@ using UnityEngine.EventSystems;
 
 public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    //private Slot slot;
-    //private Camera camera;
-    //private bool isDragging = false;
-    //private Vector3 offset;
-    //private Vector3 originalPos;
-
     private RectTransform rectTransform;
     private Slot slot;
     private Canvas canvas;
     private Vector2 originalPos;
+    private GameObject player;
 
     public Charge charge;
+    public Weapon weaponPrefab;
 
-    //[HideInInspector] public bool isTrash = false;
-    //[HideInInspector] public bool isCharge = false;
-    //[HideInInspector] public bool takeWeapon = false;
     void Start()
     {
-        //camera = Camera.main;
-        //
-        //if (slot == null)
-        //{
-        //    slot = FindObjectOfType<Slot>();
-        //}
-        //slot.AddItem(this);
-
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         originalPos = rectTransform.anchoredPosition;
@@ -40,6 +25,11 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             slot = FindObjectOfType<Slot>();
         }
         slot.AddItem(this);
+
+        if (player == null)
+        {
+            player = GameObject.FindWithTag("Player");
+        }
     }
 
     void Update()
@@ -49,22 +39,6 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public IEnumerator MoveToPosition(Vector3 targetPos)
     {
-        //float duration = 0.2f;
-        //Vector3 startPos = transform.position;
-        //float elapsed = 0f;
-        //
-        //while (elapsed < duration)
-        //{
-        //    transform.position = Vector3.Lerp(startPos, targetPos, elapsed / duration);
-        //    elapsed += Time.deltaTime;
-        //    yield return null;
-        //}
-        //
-        //targetPos.z = -2;
-        //
-        //transform.position = targetPos;
-        //originalPos = targetPos;
-
         float duration = 0.2f;
         Vector2 startPos = rectTransform.anchoredPosition;
         float elapsed = 0f;
@@ -89,64 +63,8 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         Destroy(gameObject);
     }
 
-    //void OnMouseDown()
-    //{
-    //    isDragging = true;
-    //    Vector3 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
-    //    mousePos.z = -2;
-    //    offset = transform.position - mousePos;
-    //}
-
-    //void OnMouseDrag()
-    //{
-    //    if (isDragging)
-    //    {
-    //        Vector3 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
-    //        mousePos.z = -2;
-    //        transform.position = mousePos + offset;
-    //    }
-    //}
-
-    //void OnMouseUp()
-    //{
-    //    isDragging = false;
-    //
-    //    if (takeWeapon)
-    //    {
-    //        Destroy(GetComponent<Item>());
-    //    }
-    //
-    //    //if (isTrash)
-    //    //{
-    //    //    if (isCharge)
-    //    //    {
-    //    //        slot.AddChargePoint();
-    //    //    }
-    //    //
-    //    //    Destroy(gameObject);
-    //    //}
-    //    //else
-    //    {
-    //        StartCoroutine(MoveBackToOriginal());
-    //    }
-    //
-    //}
-
     private IEnumerator MoveBackToOriginal()
     {
-        //float duration = 0.2f;
-        //Vector3 startPos = transform.position;
-        //float elapsed = 0f;
-        //
-        //while (elapsed < duration)
-        //{
-        //    transform.position = Vector3.Lerp(startPos, originalPos, elapsed / duration);
-        //    elapsed += Time.deltaTime;
-        //    yield return null;
-        //}
-        //
-        //transform.position = originalPos;
-
         float duration = 0.2f;
         Vector2 startPos = rectTransform.anchoredPosition;
         float elapsed = 0f;
@@ -194,18 +112,39 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             out localPoint
         );
 
-        // Charge のワールド座標の四隅を取得
+        // Chargeのワールド座標の四隅を取得
         Vector3[] corners = new Vector3[4];
         chargeRect.GetWorldCorners(corners);
 
-        bool inside = (localPoint.x >= corners[0].x && localPoint.x <= corners[2].x &&
+        // Chargeの当たり判定
+        bool chargeFlag = (localPoint.x >= corners[0].x && localPoint.x <= corners[2].x &&
                        localPoint.y >= corners[0].y && localPoint.y <= corners[2].y);
 
-        Debug.Log($"判定: {inside}, マウス={localPoint}, Charge範囲=({corners[0]} - {corners[2]})");
+        Debug.Log($"判定: {chargeFlag}, マウス={localPoint}, Charge範囲=({corners[0]} - {corners[2]})");
 
-        if (inside)
+        // Player の当たり判定（Collider 必須）
+        bool playerFlag = false;
+        Collider2D playerCol = player.GetComponent<Collider2D>();
+        if (playerCol != null)
+        {
+            // マウスのスクリーン座標をワールド座標に変換
+            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(
+                new Vector3(eventData.position.x, eventData.position.y, Camera.main.nearClipPlane)
+            );
+
+            playerFlag = playerCol.OverlapPoint(mouseWorld);
+        }
+
+        Debug.Log($"判定: Player={playerFlag}, マウス={eventData.position}, Position={player.transform.position}");
+
+        if (chargeFlag)
         {
             charge.AddChargePoint();
+            Destroy(gameObject);
+        }
+        else if(playerFlag)
+        {
+            Instantiate(weaponPrefab, player.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
         else
