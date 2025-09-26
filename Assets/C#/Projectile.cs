@@ -5,14 +5,19 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float damage = 10f;
-    public float lifeTime = 3f; // ˆê’èŠÔ‚ÅÁ‚¦‚é
+    public float lifeTime = 5f; // ˆê’èŠÔ‚ÅÁ‚¦‚é
 
     void Start()
+    {
+        OnProjectileStart();
+    }
+
+    protected virtual void OnProjectileStart()
     {
         Destroy(gameObject, lifeTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    public GameObject prefab;
+    public Item prefab;
+    public Transform slotsParent;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class Button : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(prefab, new Vector3(5, 0, 0), Quaternion.identity);
+            Instantiate(prefab, slotsParent);
         }
     }
 }

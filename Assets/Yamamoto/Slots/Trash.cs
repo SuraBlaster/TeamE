@@ -17,22 +17,4 @@ public class Trash : MonoBehaviour
     {
 
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Item item = other.GetComponent<Item>();
-        if (item != null)
-        {
-            item.isTrash = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        Item item = other.GetComponent<Item>();
-        if (item != null)
-        {
-            item.isTrash = false;
-        }
-    }
 }

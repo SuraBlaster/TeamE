@@ -21,7 +21,7 @@ public class TakeWeapon : MonoBehaviour
         Item item = other.GetComponent<Item>();
         if (item != null)
         {
-            item.takeWeapon = true;
+            //item.takeWeapon = true;
         }
     }
 
@@ -30,7 +30,7 @@ public class TakeWeapon : MonoBehaviour
         Item item = other.GetComponent<Item>();
         if (item != null)
         {
-            item.takeWeapon = false;
+            //item.takeWeapon = false;
         }
     }
 }
