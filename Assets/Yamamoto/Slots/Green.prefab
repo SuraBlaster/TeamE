@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893f9f2441240864983f60a73c1fe71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charge: {fileID: 122244797687312640, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
   count: 1
   itemId: 1
-  charge: {fileID: 934702435816241443, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
   weaponPrefab: {fileID: 6073654190726166338, guid: ea10862293c7dcf4c9ea0b63a909b455, type: 3}
   countText: {fileID: 4726043304227983492}
 --- !u!222 &5894423744148481059
