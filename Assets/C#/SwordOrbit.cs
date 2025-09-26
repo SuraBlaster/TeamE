@@ -23,7 +23,7 @@ public class OrbitWeapon : Weapon
         transform.position = newPos; 
         // プレイヤーから外向きの方向を計算
         Vector2 dir = (newPos - (Vector3)transform.parent.position).normalized;
-        float rotationZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 45f;
+        float rotationZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg -45;
         transform.rotation = Quaternion.Euler(0, 0, rotationZ); 
     } 
     protected override void Fire() { } 
