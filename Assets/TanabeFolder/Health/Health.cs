@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     private float current_health = 100.0f;
     [SerializeField]
     private bool is_invincible = false;
+    [SerializeField]
+    AudioSource audio;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,10 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (is_invincible == false)
+        {
             current_health -= damage;
+            audio.Play();
+        }
     }
 
     //‰ñ•œ‚ðŽó‚¯‚é
