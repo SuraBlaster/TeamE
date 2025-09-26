@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -24,15 +25,61 @@ public class EnemyBase : MonoBehaviour
 
     public ScoreScript score;
 
+    [SerializeField]
+    private SpriteRenderer sprite;
+
+    bool damaged = false;
+    float damage_timer = 0.5f;
+    float current_timer = 0.0f;
+    float current_change_timer = 0.0f;
+    bool color_changer = false;
+    float old_health = 0.0f;
+  public  void SetOldHealth(float old) { old_health = old; }
+
     public virtual string GetName() { return "Default"; }
 
     // Start is called before the first frame update
     void Start()
     {
+        old_health = health.GetCurrentHealth();
     }
 
     protected void Death()
     {
+        if(health.GetCurrentHealth() != old_health)
+        {
+            damaged = true;
+        }
+        old_health = health.GetCurrentHealth();
+
+        if(damaged)
+        {
+            current_timer += Time.deltaTime;
+            current_change_timer += Time.deltaTime;
+
+            if(current_change_timer>0.1f)
+            {
+                if(color_changer)
+                {
+                    sprite.color = Color.white;
+                }
+                else
+                {
+                    sprite.color = Color.red;
+                }
+                color_changer = !color_changer;
+                current_change_timer = 0.0f;
+            }
+            if (current_timer > damage_timer)
+            {
+                color_changer = false;
+                sprite.color = Color.white;
+                damaged = false;
+                current_timer = 0.0f;
+                current_change_timer = 0.0f;
+            }
+        }
+
         if (health.GetCurrentHealth() <= 0)
         {
            

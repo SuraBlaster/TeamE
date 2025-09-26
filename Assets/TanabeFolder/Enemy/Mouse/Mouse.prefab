@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6466065936059205753}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.87, y: 2.98, z: 0.045373578}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53,6 +53,10 @@ MonoBehaviour:
   health: {fileID: 5568993013418396406}
   death_effect: {fileID: 6027790224087261354, guid: 35ddc6579bb0c7240bfbeed409d1921d, type: 3}
   move_speed: 3.5
+  damage: 5
+  score_num: 10
+  score: {fileID: 0}
+  sprite: {fileID: 3008509656414672107}
 --- !u!114 &5568993013418396406
 MonoBehaviour:
   m_ObjectHideFlags: 0
