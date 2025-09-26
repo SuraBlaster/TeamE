@@ -17,6 +17,9 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     protected float move_speed = 5.0f;
 
+    [SerializeField]
+    private float damage = 5.0f;
+
 
     public virtual string GetName() { return "Default"; }
 
@@ -50,4 +53,13 @@ public class EnemyBase : MonoBehaviour
     protected Vector2 ToPlayer() { return player_transform.position - transform.position; }
     public void SetPlayerTransform(Transform transform) { player_transform = transform; }
     public void SetManager(EnemyManager manager) { this.manager = manager; }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // 衝突した相手がプレイヤーの弾であるかタグで判別
+        if (other.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<Health>().TakeDamage(damage);
+        }
+    }
 }

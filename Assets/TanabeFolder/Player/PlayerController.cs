@@ -6,12 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     // ˆÚ“®‘¬“x
     public float moveSpeed = 5.0f;
+    [SerializeField]
     private Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -51,5 +51,7 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
+
+
 }
 
