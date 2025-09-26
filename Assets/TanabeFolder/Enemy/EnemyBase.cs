@@ -19,7 +19,10 @@ public class EnemyBase : MonoBehaviour
 
     [SerializeField]
     private float damage = 5.0f;
+    [SerializeField]
+    int score_num = 10;
 
+    public ScoreScript score;
 
     public virtual string GetName() { return "Default"; }
 
@@ -40,6 +43,7 @@ public class EnemyBase : MonoBehaviour
             }
                 Destroy(gameObject);
             manager.AddCount(GetName());
+            score.score += score_num;
         }
     }
 

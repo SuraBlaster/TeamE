@@ -27,6 +27,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     float seconds = 0.5f;
 
+    [SerializeField]
+    ScoreScript score;
     void Start()
     {
         enemy_count = new Dictionary<string, int>();
@@ -60,6 +62,7 @@ public class EnemyManager : MonoBehaviour
             {
                 enemyComponent.SetManager(this);
                 enemyComponent.SetPlayerTransform(player_transform);
+                enemyComponent.score=score;
             }
         }
         
