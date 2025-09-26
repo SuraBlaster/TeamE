@@ -12,9 +12,9 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private Vector2 originalPos;
     private GameObject player;
 
+    public GameObject charge;
     public int count = 1;
     public int itemId;
-    public Charge charge;
     public GameObject weaponPrefab;
     public TextMeshProUGUI countText;
 
@@ -110,12 +110,11 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
             eventData.position,
-            canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera,
+            canvas.worldCamera,
             out localPoint))
         {
             rectTransform.anchoredPosition = localPoint;
         }
-
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -158,7 +157,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
         if (chargeFlag)
         {
-            charge.AddChargePoint();
+            charge.GetComponent<Charge>().AddChargePoint();
             Destroy(gameObject);
         }
         else if(playerFlag)

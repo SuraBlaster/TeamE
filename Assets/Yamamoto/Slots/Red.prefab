@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 3414101779319559331}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.0033333332, y: 0.0033333332, z: 1}
+  m_LocalScale: {x: 0.003, y: 0.003, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4745159632614366445}
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.079983, y: 0.081285}
-  m_SizeDelta: {x: 99.7287, y: 101.26354}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3908145823329379715
 Canvas:
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4869145850875813590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,10 +228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893f9f2441240864983f60a73c1fe71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charge: {fileID: 122244797687312640, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
   count: 1
   itemId: 0
-  charge: {fileID: 934702435816241443, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
-  weaponPrefab: {fileID: 3513873816220132257, guid: 4ac1fe2d93ab21d4dbb59556ab065b7a, type: 3}
+  weaponPrefab: {fileID: 6073654190726166338, guid: 0a8633fd6828fbe4f9899a7fc5e0f88d, type: 3}
   countText: {fileID: 3922917486786584340}
 --- !u!222 &6284498800648897354
 CanvasRenderer:
@@ -276,7 +276,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000096321, y: -0.000024319}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8459531546698794723
 CanvasRenderer:

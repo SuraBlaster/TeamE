@@ -15,6 +15,7 @@ public class EnemyManager : MonoBehaviour
 
     public List<EnemyType> enemyTypes;
     public Transform player_transform;
+    public Transform slots_transform;
 
     Dictionary<string, int> enemy_count;
 
@@ -62,9 +63,11 @@ public class EnemyManager : MonoBehaviour
             {
                 enemyComponent.SetManager(this);
                 enemyComponent.SetPlayerTransform(player_transform);
-                enemyComponent.score=score;
+
                 enemyComponent.SetOldHealth(enemyComponent.GetComponent<Health>().GetCurrentHealth());
-            }
+                enemyComponent.slotsParent = slots_transform;
+                enemyComponent.score = score;
+            }            
         }
         
     }
