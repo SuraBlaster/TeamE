@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class EnemyBase : MonoBehaviour
 {
+    public GameObject prefabWeapon;
+    public Slot slotsParent;
+
     private EnemyManager manager;
 
     [SerializeField]
@@ -90,9 +93,15 @@ public class EnemyBase : MonoBehaviour
             }
                 Destroy(gameObject);
             manager.AddCount(GetName());
+
+            // •Ší‚ğ’Ç‰Á‚·‚éˆ—‚ğ’Ç‰Á
+            Instantiate(prefabWeapon, slotsParent.transform.position, Quaternion.identity, slotsParent.transform);
+
+            Debug.Log("Weapon");
+
             score.score += score_num;
 
-            // •Ší‚ğ’Ç‰Á‚·‚éˆ—‚ğ’Ç‰Ái–¢j
+
         }
     }
 
