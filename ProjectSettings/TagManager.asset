@@ -6,7 +6,11 @@ TagManager:
   tags:
   - Weapon
   - Enemy
+<<<<<<< HEAD
   - Ground
+=======
+  - QuestUI
+>>>>>>> 649013674d5d911751b15ce482a9c65a1abefbe3
   layers:
   - Default
   - TransparentFX
