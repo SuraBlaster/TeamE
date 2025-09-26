@@ -103,7 +103,7 @@ RectTransform:
   m_GameObject: {fileID: 7006678276530611491}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.0033333332, y: 0.0033333332, z: 1}
+  m_LocalScale: {x: 0.003, y: 0.003, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2421066256890510729}
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &706389708000007232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 49.430325, y: 0, z: 50.12652, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
   count: 1
   itemId: 2
   charge: {fileID: 934702435816241443, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
-  weaponPrefab: {fileID: 5355260745333318638, guid: 6428560e81979e54cbc03d3d143d3d9c, type: 3}
+  weaponPrefab: {fileID: 851412567620499421, guid: d76d6736fc45a4942a8b670ca48db7db, type: 3}
   countText: {fileID: 3797352952403068722}
 --- !u!222 &435000663822220529
 CanvasRenderer:
