@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1120050992752138186}
   - component: {fileID: 6892140963413440805}
   - component: {fileID: 8949730676392387114}
-  - component: {fileID: -2564019370237263221}
+  - component: {fileID: -914310311047838854}
   m_Layer: 0
   m_Name: ProjectileSword
   m_TagString: Weapon
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.56
---- !u!114 &-2564019370237263221
+--- !u!114 &-914310311047838854
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,8 +158,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3513873816220132257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c61f51edfc5c1447b39dc6e2ee0efbe, type: 3}
+  m_Script: {fileID: 11500000, guid: db23753f4527f004c999593f034c3b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  lifeTime: 3
+  lifeTime: 5
+  speed: 10

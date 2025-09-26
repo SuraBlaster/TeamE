@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - QuestUI
   - Weapon
   layers:
   - Default
@@ -45,8 +44,5 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: UI
-    uniqueID: 2361139279
-    locked: 0
-  - name: tsts
-    uniqueID: 3294721629
+    uniqueID: 3248407703
     locked: 0

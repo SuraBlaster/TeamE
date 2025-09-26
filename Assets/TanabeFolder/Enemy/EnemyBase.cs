@@ -91,6 +91,8 @@ public class EnemyBase : MonoBehaviour
                 Destroy(gameObject);
             manager.AddCount(GetName());
             score.score += score_num;
+
+            // •Ší‚ğ’Ç‰Á‚·‚éˆ—‚ğ’Ç‰Ái–¢j
         }
     }
 

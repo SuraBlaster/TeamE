@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
-
 public class AxeProjectile : Projectile
 {
     public float throwForce = 10f;          // 投げる力
@@ -19,22 +17,12 @@ public class AxeProjectile : Projectile
 
     void Start()
     {
-        // ランダムな方向に斧を投げる
-        Vector2 randomDir = Random.insideUnitCircle.normalized;
-        rb.AddForce(randomDir * throwForce, ForceMode2D.Impulse);
-
         // 一定時間後に消える処理は基底ProjectileのStart()で動作
         base.OnProjectileStart();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        // 衝撃波を出す
-        if (shockwavePrefab != null)
-        {
-            Instantiate(shockwavePrefab, transform.position, Quaternion.identity);
-        }
-
         // 範囲内の敵にダメージ
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, shockwaveRadius);
         foreach (Collider2D hit in hits)
@@ -46,16 +34,15 @@ public class AxeProjectile : Projectile
                 {
                     enemy.TakeDamage(damage);
                 }
+                // 衝撃波を出す
+                if (shockwavePrefab != null)
+                {
+                    Instantiate(shockwavePrefab, transform.position, Quaternion.identity);
+                }
+                Destroy(gameObject); // 斧本体は消える
             }
         }
 
-        Destroy(gameObject); // 斧本体は消える
-    }
-
-    // ショックウェーブの範囲をSceneビューで見えるように
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, shockwaveRadius);
+        
     }
 }
