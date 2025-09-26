@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using TMPro;
 public class ScoreScript : MonoBehaviour
 {
     [SerializeField]
-    Text score_text;
+    //Text score_text;
+    TextMeshProUGUI score_text;
 
     public int score = 0;
 
