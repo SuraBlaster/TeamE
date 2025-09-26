@@ -9,6 +9,11 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
+        OnProjectileStart();
+    }
+
+    protected virtual void OnProjectileStart()
+    {
         Destroy(gameObject, lifeTime);
     }
 

@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class AxeProjectile : Projectile
 {
-    public GameObject shockwavePrefab;   // 衝撃波のプレハブ
-    public float shockwaveRadius = 2f;   // 衝撃波の半径
-    public LayerMask enemyLayer;         // 敵のレイヤー判定用
+    public float throwForce = 10f;          // 投げる力
+    public float shockwaveRadius = 3f;      // 衝撃波の範囲
+    public GameObject shockwavePrefab;      // 衝撃波のエフェクトPrefab
 
     private Rigidbody2D rb;
 
@@ -17,36 +17,45 @@ public class AxeProjectile : Projectile
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Launch(Vector2 direction, float force)
+    void Start()
     {
-        rb.AddForce(direction * force, ForceMode2D.Impulse);
+        // ランダムな方向に斧を投げる
+        Vector2 randomDir = Random.insideUnitCircle.normalized;
+        rb.AddForce(randomDir * throwForce, ForceMode2D.Impulse);
+
+        // 一定時間後に消える処理は基底ProjectileのStart()で動作
+        base.OnProjectileStart();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 斧が地面や敵に着弾したとき
-        Explode();
-    }
-
-    private void Explode()
-    {
-        // 衝撃波の生成（アニメーション付きPrefab）
+        // 衝撃波を出す
         if (shockwavePrefab != null)
         {
             Instantiate(shockwavePrefab, transform.position, Quaternion.identity);
         }
 
-        // 範囲内の敵を検索
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, shockwaveRadius, enemyLayer);
-        foreach (var hit in hits)
+        // 範囲内の敵にダメージ
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, shockwaveRadius);
+        foreach (Collider2D hit in hits)
         {
-            Health enemy = hit.GetComponent<Health>();
-            if (enemy != null)
+            if (hit.CompareTag("Enemy")) // Tagで判定
             {
-                enemy.TakeDamage(damage); // Projectileから継承したdamage
+                Health enemy = hit.GetComponent<Health>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage);
+                }
             }
         }
 
         Destroy(gameObject); // 斧本体は消える
+    }
+
+    // ショックウェーブの範囲をSceneビューで見えるように
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, shockwaveRadius);
     }
 }

@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjectileSword
       objectReference: {fileID: 0}
+    - target: {fileID: 3513873816220132257, guid: 4ac1fe2d93ab21d4dbb59556ab065b7a, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
     - target: {fileID: 6729058594025282275, guid: 4ac1fe2d93ab21d4dbb59556ab065b7a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.27
@@ -491,6 +495,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2294767776611057295, guid: 84fdf568979af134e9a72134fdea6e05, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2294767776611057295, guid: 84fdf568979af134e9a72134fdea6e05, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7137251507229433539, guid: 84fdf568979af134e9a72134fdea6e05, type: 3}

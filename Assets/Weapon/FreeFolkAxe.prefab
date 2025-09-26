@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8749675995589445646}
   m_Layer: 0
   m_Name: FreeFolkAxe
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,5 +161,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a547c362b29a7145904e372bbed85d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shockwavePrefab: {fileID: 6891452591756627108, guid: 1d04fa21029c12d448b65bd3116c740a, type: 3}
   damage: 0
+  lifeTime: 5
+  shockwavePrefab: {fileID: 6891452591756627108, guid: 1d04fa21029c12d448b65bd3116c740a, type: 3}
+  shockwaveRadius: 2
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
