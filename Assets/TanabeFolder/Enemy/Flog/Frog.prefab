@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabWeapon: {fileID: 4773729769014374367, guid: 689a359578c53c148b4d5ee9c5845b5e, type: 3}
-  slotsParent: {fileID: -5064234512033660197, guid: db280568199fa244bb71f890f25bd1c4, type: 3}
+  slotsParent: {fileID: 8381903327411694089, guid: c73a5dbaaef59314787dff33746c1c95, type: 3}
   player_transform: {fileID: 0}
   health: {fileID: 4608251110968149765}
   death_effect: {fileID: 6027790224087261354, guid: 35ddc6579bb0c7240bfbeed409d1921d, type: 3}

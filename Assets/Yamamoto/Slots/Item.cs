@@ -110,12 +110,11 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
             eventData.position,
-            canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera,
+            canvas.worldCamera,
             out localPoint))
         {
             rectTransform.anchoredPosition = localPoint;
         }
-
     }
 
     public void OnEndDrag(PointerEventData eventData)

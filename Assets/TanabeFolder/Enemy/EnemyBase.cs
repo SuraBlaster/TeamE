@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class EnemyBase : MonoBehaviour
 {
     public GameObject prefabWeapon;
-    public Slot slotsParent;
+    public Transform slotsParent;
 
     private EnemyManager manager;
 
@@ -95,7 +95,7 @@ public class EnemyBase : MonoBehaviour
             manager.AddCount(GetName());
 
             // •Ší‚ğ’Ç‰Á‚·‚éˆ—‚ğ’Ç‰Á
-            Instantiate(prefabWeapon, slotsParent.transform.position, Quaternion.identity, slotsParent.transform);
+            Instantiate(prefabWeapon, slotsParent);
 
             Debug.Log("Weapon");
 
