@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -11,8 +12,11 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private Vector2 originalPos;
     private GameObject player;
 
+    public int count = 1;
+    public int itemId;
     public Charge charge;
-    public Weapon weaponPrefab;
+    public GameObject weaponPrefab;
+    public TextMeshProUGUI countText;
 
     void Start()
     {
@@ -30,6 +34,8 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             player = GameObject.FindWithTag("Player");
         }
+
+        UpdateCountUI();
     }
 
     void Update()
@@ -37,14 +43,26 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         
     }
 
+    public void UpdateCountUI()
+    {
+        if (countText != null)
+        {
+            countText.text = count.ToString();
+        }
+    }
+
     public IEnumerator MoveToPosition(Vector3 targetPos)
     {
+        if (rectTransform == null) yield break;
+
         float duration = 0.2f;
         Vector2 startPos = rectTransform.anchoredPosition;
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
+            if (rectTransform == null) yield break;
+
             rectTransform.anchoredPosition = Vector2.Lerp(startPos, targetPos, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
@@ -92,11 +110,12 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
             eventData.position,
-            canvas.worldCamera,
+            canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera,
             out localPoint))
         {
             rectTransform.anchoredPosition = localPoint;
         }
+
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -144,7 +163,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         else if(playerFlag)
         {
-            Instantiate(weaponPrefab, player.transform.position, Quaternion.identity);
+            Instantiate(weaponPrefab, player.transform.position, Quaternion.identity, player.transform);
             Destroy(gameObject);
         }
         else

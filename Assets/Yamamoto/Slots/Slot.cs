@@ -8,7 +8,7 @@ public class Slot : MonoBehaviour
     public Vector2 itemSpacePos;
     //public int chargePoint;
 
-    private const int MaxWidth = 8;
+    private const int MaxWidth = 7;
     private Item[] items = new Item[MaxWidth];
 
     // Start is called before the first frame update
@@ -20,7 +20,28 @@ public class Slot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // まず隙間を詰める
         CompactItems();
+
+        // マージが発生しなくなるまで繰り返す
+        bool merged;
+        do
+        {
+            merged = false;
+            for (int i = 0; i < MaxWidth - 1; i++)
+            {
+                if (items[i] != null && items[i + 1] != null)
+                {
+                    if (items[i].itemId == items[i + 1].itemId)
+                    {
+                        MergeItems(i, i + 1);
+                        CompactItems();
+                        merged = true;
+                        break; // 配列が変わったのでループをやり直す
+                    }
+                }
+            }
+        } while (merged);
     }
 
     public void AddItem(Item item)
@@ -84,8 +105,36 @@ public class Slot : MonoBehaviour
         }
     }
 
-    //public void AddChargePoint()
-    //{
-    //    chargePoint += 1;
-    //}
+    private void CheckAndRemoveAdjacent(int index)
+    {
+        Item current = items[index];
+        if (current == null) return;
+
+        // 左隣をチェック
+        if (index > 0 && items[index - 1] != null)
+        {
+            if (items[index - 1].itemId == current.itemId)
+            {
+                MergeItems(index, index - 1);
+            }
+        }
+
+        // 削除後に詰め直す
+        CompactItems();
+    }
+
+    private void MergeItems(int baseIndex, int targetIndex)
+    {
+        Item baseItem = items[baseIndex];
+        Item targetItem = items[targetIndex];
+
+        baseItem.count = baseItem.count + targetItem.count;
+
+        baseItem.count = Mathf.Min(baseItem.count, 999);
+
+        baseItem.UpdateCountUI();
+
+        targetItem.DestroySelf();
+        items[targetIndex] = null;
+    }
 }
