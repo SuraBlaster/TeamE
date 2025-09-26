@@ -94,7 +94,7 @@ public class QuestManager : MonoBehaviour
             //クエスト系
             {
                 string name = current_quest.GetName();
-                if (name == "Flog") frogUi.SetActive(true);
+                if (name == "Frog") frogUi.SetActive(true);
                 if (name == "Spider") spiderUi.SetActive(true);
                 if (name == "Mouse") mouseUi.SetActive(true);
 
@@ -131,6 +131,7 @@ public class QuestManager : MonoBehaviour
     // 重み付きでクエストをランダム生成
     private QuestType SelectRandomQuestType()
     {
+
         float totalWeight = 0;
         // questTypesリストを反復処理
         foreach (var type in questTypes)
@@ -139,6 +140,7 @@ public class QuestManager : MonoBehaviour
         }
 
         float randomValue = UnityEngine.Random.Range(0.0f, totalWeight);
+
         float currentWeight = 0;
 
         foreach (var type in questTypes)
