@@ -39,6 +39,7 @@ public class Health : MonoBehaviour
     public void TakeHeel(float heel)
     {
         current_health += heel;
+        if(max_health <= current_health) current_health=max_health;
     }
 
     //–³“GÝ’è

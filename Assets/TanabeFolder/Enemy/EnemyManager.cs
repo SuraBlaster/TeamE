@@ -98,7 +98,7 @@ public class EnemyManager : MonoBehaviour
         // プレイヤーから(spawn_range_x,spawn_range_y)離れた位置に生成
         return new Vector3(
             player_transform.position.x + UnityEngine.Random.Range(spawn_range_min.x, spawn_range_max.y),
-            player_transform.position.y + UnityEngine.Random.Range(spawn_range_min.x, spawn_range_min.y),
+            player_transform.position.y + UnityEngine.Random.Range(spawn_range_min.x, spawn_range_max.y),
             0);
     }
 
