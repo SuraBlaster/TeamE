@@ -3,14 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
   - Weapon
   - Enemy
-<<<<<<< HEAD
   - Ground
-=======
   - QuestUI
->>>>>>> 649013674d5d911751b15ce482a9c65a1abefbe3
+  tags: []
   layers:
   - Default
   - TransparentFX
