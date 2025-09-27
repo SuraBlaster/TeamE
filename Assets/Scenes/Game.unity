@@ -195,7 +195,15 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
+      propertyPath: spawn_range_max.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
       propertyPath: spawn_range_min.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
+      propertyPath: spawn_range_min.y
       value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
