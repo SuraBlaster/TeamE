@@ -23,4 +23,8 @@ public class TimerUIScript : MonoBehaviour
         current_time += Time.deltaTime;
         timer_image.fillAmount = 1.0f - (current_time / total_time);
     }
+
+    public float GetCurrentTime() { return current_time; }
+    public float GetTotalTime() { return total_time; }
+    public float NormalizeTime() {  return current_time / total_time; }
 }
