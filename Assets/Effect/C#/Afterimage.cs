@@ -33,6 +33,8 @@ public class AfterImage : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         color = sr.color;
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
 
     void Update()

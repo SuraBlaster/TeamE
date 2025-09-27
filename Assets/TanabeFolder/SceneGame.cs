@@ -37,7 +37,7 @@ public class SceneGame : MonoBehaviour
         enemyManager.CorrectionValue(wave.hp_correction);
 
         //ŠÔŠÇ—
-        if (wave.time < timer_ui.NormalizeTime()) conut++;
+        if (wave.time < timer_ui.GetCurrentTime()) conut++;
         if (conut >= waves.Count) conut = waves.Count;
     }
 }

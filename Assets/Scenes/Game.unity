@@ -195,7 +195,15 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
+      propertyPath: spawn_range_max.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
       propertyPath: spawn_range_min.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
+      propertyPath: spawn_range_min.y
       value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 6337264798322565761, guid: 595d0d2535dc6f946993791c776cf969, type: 3}
@@ -267,8 +275,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -285,8 +293,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 112.63
+  m_fontSizeBase: 112.63
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -397,6 +405,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1015245994}
+    - target: {fileID: 1868777883592248289, guid: f4d9c553fa3a3bb439a8b1803f5681e9, type: 3}
+      propertyPath: start_time
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1868777883592248289, guid: f4d9c553fa3a3bb439a8b1803f5681e9, type: 3}
       propertyPath: enemy_manager
       value: 
@@ -939,22 +951,22 @@ MonoBehaviour:
   enemyManager: {fileID: 1466338765}
   timer_ui: {fileID: 751819218}
   waves:
-  - time: 0
+  - time: 30
+    hp_correction: 0.01
+    spawn_seconds: 8
+    spawn_amonut: 15
+  - time: 60
+    hp_correction: 0.5
+    spawn_seconds: 8
+    spawn_amonut: 20
+  - time: 90
+    hp_correction: 0.5
+    spawn_seconds: 8
+    spawn_amonut: 20
+  - time: 120
     hp_correction: 1
-    spawn_seconds: 10
-    spawn_amonut: 5
-  - time: 0.2
-    hp_correction: 1.2
-    spawn_seconds: 5
-    spawn_amonut: 7
-  - time: 0.5
-    hp_correction: 1.4
-    spawn_seconds: 5
-    spawn_amonut: 8
-  - time: 0.8
-    hp_correction: 1.5
-    spawn_seconds: 5
-    spawn_amonut: 10
+    spawn_seconds: 8
+    spawn_amonut: 40
 --- !u!224 &800144472 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 288423612751534117, guid: 0bc8e3482577fa34c9b6afd8899f9dca, type: 3}
@@ -1076,6 +1088,10 @@ PrefabInstance:
     - target: {fileID: 2729485790337422728, guid: f6a86a4154b1fc441abe63080b2d21fa, type: 3}
       propertyPath: m_Name
       value: SystemUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163212984912363795, guid: f6a86a4154b1fc441abe63080b2d21fa, type: 3}
+      propertyPath: total_time
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4653320610188876022, guid: f6a86a4154b1fc441abe63080b2d21fa, type: 3}
       propertyPath: m_Pivot.x
@@ -2159,7 +2175,7 @@ PrefabInstance:
       objectReference: {fileID: 466262920}
     - target: {fileID: 4483773427356813987, guid: 84fdf568979af134e9a72134fdea6e05, type: 3}
       propertyPath: is_invincible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4483773427356813987, guid: 84fdf568979af134e9a72134fdea6e05, type: 3}
       propertyPath: current_health
@@ -2175,7 +2191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7137251507229433539, guid: 84fdf568979af134e9a72134fdea6e05, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.31
       objectReference: {fileID: 0}
     - target: {fileID: 7137251507229433539, guid: 84fdf568979af134e9a72134fdea6e05, type: 3}
       propertyPath: m_LocalRotation.w

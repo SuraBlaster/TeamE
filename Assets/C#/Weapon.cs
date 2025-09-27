@@ -13,6 +13,7 @@ public abstract class Weapon : MonoBehaviour
     {
         baseDamage = damage;
         fireRate = rate;
+        fireTimer = UnityEngine.Random.Range(0.0f, fireRate);
     }
 
     void Update()
