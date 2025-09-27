@@ -37,6 +37,7 @@ public class EnemyBase : MonoBehaviour
     float current_change_timer = 0.0f;
     bool color_changer = false;
     float old_health = 0.0f;
+    public int rand_amount = 10;
   public  void SetOldHealth(float old) { old_health = old; }
 
     public virtual string GetName() { return "Default"; }
@@ -95,11 +96,14 @@ public class EnemyBase : MonoBehaviour
             manager.AddCount(GetName());
 
             // •Ší‚ğ’Ç‰Á‚·‚éˆ—‚ğ’Ç‰Á
-            int rand_weapon_num = UnityEngine.Random.Range(0, prefabWeapons.Count);
-            GameObject item = Instantiate(prefabWeapons[rand_weapon_num], slotsParent);
-            item.GetComponent<Item>().slotsParent = slotsParent;
 
-            Debug.Log("Weapon");
+            if (UnityEngine.Random.Range(0, rand_amount) == 0.0f)
+            {
+                int rand_weapon_num = UnityEngine.Random.Range(0, prefabWeapons.Count);
+                GameObject item = Instantiate(prefabWeapons[rand_weapon_num], slotsParent);
+                item.GetComponent<Item>().slotsParent = slotsParent;
+                Debug.Log("Weapon");
+            }
 
             score.score += score_num;
 

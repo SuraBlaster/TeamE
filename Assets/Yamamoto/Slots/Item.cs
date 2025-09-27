@@ -57,7 +57,10 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (countText != null)
         {
-            countText.text = count.ToString();
+            if (nextWeaponPrefab == null)
+                countText.text = "";
+            else
+                countText.text = count.ToString();
         }
     }
 
@@ -170,9 +173,14 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             charge.GetComponent<Charge>().AddChargePoint();
             Destroy(gameObject);
         }
-        else if(playerFlag)
+        else if (playerFlag)
         {
-            Instantiate(weaponPrefab, player.transform.position, Quaternion.identity, player.transform);
+            int size = 0;
+            while (size != count)
+            {
+                Instantiate(weaponPrefab, player.transform.position, Quaternion.identity, player.transform);
+                size++;
+            }
             Destroy(gameObject);
         }
         else

@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f4518a88a083448ef6e413a2236f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabWeapon: {fileID: 4773729769014374367, guid: 689a359578c53c148b4d5ee9c5845b5e, type: 3}
+  prefabWeapons: []
   slotsParent: {fileID: 8381903327411694089, guid: c73a5dbaaef59314787dff33746c1c95, type: 3}
   player_transform: {fileID: 0}
   health: {fileID: 4608251110968149765}
@@ -81,6 +81,7 @@ MonoBehaviour:
   score_num: 10
   score: {fileID: 0}
   sprite: {fileID: 4724708872578955725}
+  rand_amount: 10
   stop_timer: 1
   move_timer: 0.5
   animator: {fileID: 6755103271088490643}

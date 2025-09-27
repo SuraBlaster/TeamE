@@ -58,8 +58,8 @@ public class Map : MonoBehaviour
 
     void SpawnChunk(Vector2Int coord)
     {
-        Vector2 worldPos = new Vector2(coord.x * chunkSize, coord.y * chunkSize);
-        var chunk = Instantiate(chunkPrefab, worldPos, Quaternion.identity);
+        Vector3 worldPos = new Vector3(coord.x * chunkSize, coord.y * chunkSize, transform.position.z);
+        var chunk = Instantiate(chunkPrefab, worldPos, Quaternion.identity,transform);
         chunks.Add(coord, chunk);
     }
 }

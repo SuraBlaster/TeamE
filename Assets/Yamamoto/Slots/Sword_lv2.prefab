@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e67e11d800ebc144b9a0a05702c468e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ce68bd00ecc6f64baefd01ce27f33f9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 1453971847577750375}
   - component: {fileID: 435000663822220529}
   m_Layer: 0
-  m_Name: Axis_lv2
+  m_Name: Sword_lv2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,8 +440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charge: {fileID: 122244797687312640, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
   count: 1
-  itemId: 12
-  weaponPrefab: {fileID: 851412567620499421, guid: 5bb07b2c3c792b644aac25e51407da28, type: 3}
+  itemId: 52
+  weaponPrefab: {fileID: 6073654190726166338, guid: 24005117c1364ed4fba96baddfdda57d, type: 3}
   nextWeaponPrefab: {fileID: 0}
   slotsParent: {fileID: 0}
   countText: {fileID: 8725827140986399519}

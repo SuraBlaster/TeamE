@@ -308,7 +308,7 @@ MonoBehaviour:
   count: 1
   itemId: 21
   weaponPrefab: {fileID: 6073654190726166338, guid: 0a8633fd6828fbe4f9899a7fc5e0f88d, type: 3}
-  nextWeaponPrefab: {fileID: 0}
+  nextWeaponPrefab: {fileID: 4773729769014374367, guid: af9b4440cec5e064c9861c0c92568813, type: 3}
   slotsParent: {fileID: 8381903327411694089, guid: c73a5dbaaef59314787dff33746c1c95, type: 3}
   countText: {fileID: 3922917486786584340}
 --- !u!222 &6284498800648897354
