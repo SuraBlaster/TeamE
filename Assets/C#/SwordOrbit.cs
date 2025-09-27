@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class OrbitWeapon : Weapon 
 {
@@ -24,7 +25,16 @@ public class OrbitWeapon : Weapon
         transform.position = newPos; 
         // プレイヤーから外向きの方向を計算
         Vector2 dir = (newPos - (Vector3)transform.parent.position).normalized;
-        float rotationZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg -45;
+        float rotationZ;
+        if (transform.parent.localScale.x < 0)
+        {
+            rotationZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 135;
+        }
+        else
+        {
+            rotationZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 45;
+        }
+        
         transform.rotation = Quaternion.Euler(0, 0, rotationZ); 
     } 
     protected override void Fire() { } 
