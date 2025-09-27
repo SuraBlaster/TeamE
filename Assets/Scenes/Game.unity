@@ -2030,6 +2030,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slots
       objectReference: {fileID: 0}
+    - target: {fileID: 5169265305846374618, guid: c73a5dbaaef59314787dff33746c1c95, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6899762536061165675, guid: c73a5dbaaef59314787dff33746c1c95, type: 3}
       propertyPath: m_LocalScale.x
       value: 0
