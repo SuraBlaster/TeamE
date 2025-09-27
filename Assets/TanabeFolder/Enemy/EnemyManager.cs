@@ -41,7 +41,7 @@ public class EnemyManager : MonoBehaviour
     public void CorrectionValue(float amount) { correction_value = amount; }
 
     [SerializeField]
-    ScoreScript score;
+    //ScoreScript score;
     void Start()
     {
         enemy_count = new Dictionary<string, int>();
@@ -88,7 +88,7 @@ public class EnemyManager : MonoBehaviour
                     enemyComponent.prefabWeapons = prefabWeapons;
 
                     enemyComponent.slotsParent = slots_transform;
-                    enemyComponent.score = score;
+                    //enemyComponent.score = score;
                 }
             }
 
