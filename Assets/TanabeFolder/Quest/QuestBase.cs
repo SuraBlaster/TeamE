@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class QuestBase : MonoBehaviour
 {
@@ -42,6 +43,8 @@ public class QuestBase : MonoBehaviour
         {
             manager.SetQuestState(QuestManager.QuestState.Suceeded);
             finalize = true;
+
+            SceneManager.LoadScene("GameClear");
         }
 
         //時間オーバー時、失敗を返す
@@ -49,10 +52,12 @@ public class QuestBase : MonoBehaviour
         {
             manager.SetQuestState(QuestManager.QuestState.Failed);
             finalize = true;
+
+            SceneManager.LoadScene("GameOver");
         }
 
         //削除
-        if(finalize) {Destroy(gameObject); }
+        if (finalize) {Destroy(gameObject); }
     }
     
     protected QuestManager GetQuestManager() {  return manager; }
