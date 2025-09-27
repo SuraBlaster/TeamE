@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5.0f;
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private AfterImageEffect move_effect;
+    bool effect_checker = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,6 +53,13 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+
+        if (move_effect.enabled == true&& effect_checker==false)
+        {
+            effect_checker = true;
+            moveSpeed *= 1.5f;
+        }
+
     }
 
 
