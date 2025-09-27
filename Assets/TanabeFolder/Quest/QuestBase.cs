@@ -44,7 +44,7 @@ public class QuestBase : MonoBehaviour
             manager.SetQuestState(QuestManager.QuestState.Suceeded);
             finalize = true;
 
-            SceneManager.LoadScene("GameClear");
+            //SceneManager.LoadScene("GameClear");
         }
 
         //時間オーバー時、失敗を返す
@@ -53,7 +53,7 @@ public class QuestBase : MonoBehaviour
             manager.SetQuestState(QuestManager.QuestState.Failed);
             finalize = true;
 
-            SceneManager.LoadScene("GameOver");
+            //SceneManager.LoadScene("GameOver");
         }
 
         //削除
