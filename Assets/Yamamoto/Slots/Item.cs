@@ -16,6 +16,8 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public int count = 1;
     public int itemId;
     public GameObject weaponPrefab;
+    public GameObject nextWeaponPrefab;
+    public Transform slotsParent;
     public TextMeshProUGUI countText;
 
     void Start()
@@ -41,6 +43,14 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     void Update()
     {
         
+    }
+
+    public void ChangeNextWeapon()
+    {
+        if (nextWeaponPrefab == null) return;
+        GameObject weapon = Instantiate(nextWeaponPrefab, slotsParent.transform.position, Quaternion.identity, slotsParent.transform);
+        weapon.GetComponent<Item>().slotsParent = this.slotsParent;
+        DestroySelf();
     }
 
     public void UpdateCountUI()
