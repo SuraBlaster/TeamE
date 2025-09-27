@@ -10,7 +10,7 @@ public class ScoreScript : MonoBehaviour
     //Text score_text;
     TextMeshProUGUI score_text;
 
-    public int score = 0;
+    public static int score = 0;
 
     // Start is called before the first frame update
     void Start()

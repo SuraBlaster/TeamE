@@ -26,7 +26,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     int score_num = 10;
 
-    public ScoreScript score;
+    //public ScoreScript score;
 
     [SerializeField]
     private SpriteRenderer sprite;
@@ -105,8 +105,8 @@ public class EnemyBase : MonoBehaviour
                 Debug.Log("Weapon");
             }
 
-            score.score += score_num;
-
+            //score.score += score_num;
+            ScoreScript.score += score_num;
 
         }
     }
