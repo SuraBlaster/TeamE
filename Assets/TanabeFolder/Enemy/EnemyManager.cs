@@ -123,7 +123,7 @@ public class EnemyManager : MonoBehaviour
     {
         Vector3 spawnPosition = transform.position;
         // プレイヤーから(spawn_range_x,spawn_range_y)離れた位置に生成
-        switch (UnityEngine.Random.Range(0, 3))
+        switch (UnityEngine.Random.Range(0, 4))
         {
             case 0:
                 spawnPosition= new Vector3(
@@ -148,6 +148,9 @@ public class EnemyManager : MonoBehaviour
                     player_transform.position.x + UnityEngine.Random.Range(spawn_range_min.x, spawn_range_max.x),
                     player_transform.position.y + spawn_range_max.y,
                     0);
+                break;
+            default:
+                int i = 0;
                 break;
         }
 
