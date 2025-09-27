@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff72c1f11887c649b1d9c88c0c3295f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Effect Scene
+  targetSceneName: Game
   fadeImage: {fileID: 630527039}
   fadeDuration: 0.5
 --- !u!4 &220436194
