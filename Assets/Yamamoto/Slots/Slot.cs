@@ -30,6 +30,8 @@ public class Slot : MonoBehaviour
             merged = false;
             for (int i = 0; i < MaxWidth - 1; i++)
             {
+                if (items[i].nextWeaponPrefab == null) return;
+
                 if (items[i] != null && items[i + 1] != null)
                 {
                     if (items[i].itemId == items[i + 1].itemId)
@@ -131,6 +133,13 @@ public class Slot : MonoBehaviour
         baseItem.count = baseItem.count + targetItem.count;
 
         baseItem.count = Mathf.Min(baseItem.count, 999);
+
+        // i‰»æ
+        if (baseItem.count >= 5)
+        {
+            baseItem.ChangeNextWeapon();
+        }
+
 
         baseItem.UpdateCountUI();
 

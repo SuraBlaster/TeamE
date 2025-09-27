@@ -14,6 +14,11 @@ public class EnemyManager : MonoBehaviour
     }
 
     public List<EnemyType> enemyTypes;
+
+
+    public List<GameObject> prefabWeapons;
+
+
     public Transform player_transform;
     public Transform slots_transform;
 
@@ -78,6 +83,9 @@ public class EnemyManager : MonoBehaviour
                     Health enemy_health = enemyComponent.GetComponent<Health>();
                     enemy_health.SetMaxHealth(enemy_health.GetMaxHealth() * correction_value);
                     enemyComponent.SetOldHealth(enemy_health.GetCurrentHealth());
+
+                    //•ŠíƒŠƒXƒg“n‚·
+                    enemyComponent.prefabWeapons = prefabWeapons;
 
                     enemyComponent.slotsParent = slots_transform;
                     enemyComponent.score = score;

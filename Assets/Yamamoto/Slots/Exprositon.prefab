@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b9505e419a14dda4ea399d26d5955f94, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 90471814bf9ec2943aae97d43f7d33c3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 1453971847577750375}
   - component: {fileID: 435000663822220529}
   m_Layer: 0
-  m_Name: Blue
+  m_Name: Exprositon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,8 +440,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charge: {fileID: 122244797687312640, guid: b664edcfe81f7e14c8bcaa833fa67791, type: 3}
   count: 1
-  itemId: 2
-  weaponPrefab: {fileID: 851412567620499421, guid: d76d6736fc45a4942a8b670ca48db7db, type: 3}
+  itemId: 31
+  weaponPrefab: {fileID: 8588183928844895561, guid: 1f17841ac40f34a42be89e7947be680d, type: 3}
+  nextWeaponPrefab: {fileID: 8968536661918091823, guid: afa5664ff50271c4f9b3fd52c73b73ca, type: 3}
+  slotsParent: {fileID: 0}
   countText: {fileID: 8725827140986399519}
 --- !u!222 &435000663822220529
 CanvasRenderer:

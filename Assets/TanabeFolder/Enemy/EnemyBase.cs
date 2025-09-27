@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyBase : MonoBehaviour
 {
-    public GameObject prefabWeapon;
+    public List<GameObject> prefabWeapons;
     public Transform slotsParent;
 
     private EnemyManager manager;
@@ -85,17 +85,19 @@ public class EnemyBase : MonoBehaviour
 
         if (health.GetCurrentHealth() <= 0)
         {
-           
+
             if (death_effect != null)
             {
                 GameObject effect = Instantiate(death_effect, transform.position, Quaternion.identity);
                 effect.GetComponent<ParticleSystem>().Play();
             }
-                Destroy(gameObject);
+            Destroy(gameObject);
             manager.AddCount(GetName());
 
             // •Ší‚ğ’Ç‰Á‚·‚éˆ—‚ğ’Ç‰Á
-            Instantiate(prefabWeapon, slotsParent);
+            int rand_weapon_num = UnityEngine.Random.Range(0, prefabWeapons.Count);
+            GameObject item = Instantiate(prefabWeapons[rand_weapon_num], slotsParent);
+            item.GetComponent<Item>().slotsParent = slotsParent;
 
             Debug.Log("Weapon");
 
