@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class EnemyManager : MonoBehaviour
 {
+    public GameObject PlayerAttach;
+
     // “G‚Ìí—Ş‚²‚Æ‚ÉƒvƒŒƒnƒu‚Æ¶¬ˆÊ’u‚ğŠi”[‚·‚é
     [Serializable]
     public class EnemyType
@@ -78,6 +80,7 @@ public class EnemyManager : MonoBehaviour
                 {
                     enemyComponent.SetManager(this);
                     enemyComponent.SetPlayerTransform(player_transform);
+                    enemyComponent.Attach_Player = PlayerAttach;
 
                     //HPİ’è
                     Health enemy_health = enemyComponent.GetComponent<Health>();

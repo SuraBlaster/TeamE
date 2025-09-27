@@ -10,7 +10,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private Slot slot;
     private Canvas canvas;
     private Vector2 originalPos;
-    private GameObject player;
+    public GameObject player;
 
     public GameObject charge;
     public int count = 1;
@@ -32,10 +32,10 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         slot.AddItem(this);
 
-        if (player == null)
-        {
-            player = GameObject.FindWithTag("Player");
-        }
+        //if (player == null)
+        //{
+        //    player = GameObject.FindWithTag("Player");
+        //}
 
         UpdateCountUI();
     }
@@ -50,6 +50,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         if (nextWeaponPrefab == null) return;
         GameObject weapon = Instantiate(nextWeaponPrefab, slotsParent.transform.position, Quaternion.identity, slotsParent.transform);
         weapon.GetComponent<Item>().slotsParent = this.slotsParent;
+        weapon.GetComponent<Item>().player = player;
         DestroySelf();
     }
 
@@ -134,7 +135,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         RectTransform chargeRect = charge.GetComponent<RectTransform>();
 
-        // マウスのCanvasローカル座標
+        // マウスのスクリーン座標を Canvas ローカル座標に変換
         Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
@@ -143,22 +144,18 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             out localPoint
         );
 
-        // Chargeの四隅をCanvasローカル座標に変換
+        // Chargeのワールド座標の四隅を取得
         Vector3[] corners = new Vector3[4];
         chargeRect.GetWorldCorners(corners);
-        Vector2 corner0Local = canvas.transform.InverseTransformPoint(corners[0]);
-        Vector2 corner2Local = canvas.transform.InverseTransformPoint(corners[2]);
 
-        // 当たり判定（Canvasローカル座標で比較）
+        // Chargeの当たり判定
         bool chargeFlag = (
-            localPoint.x >= corner0Local.x &&
-            localPoint.x <= corner2Local.x &&
-            localPoint.y >= corner0Local.y &&
-            localPoint.y <= corner2Local.y
-        );
+            localPoint.x >= corners[0].x &&
+            localPoint.x <= corners[2].x &&
+            localPoint.y >= corners[0].y &&
+            localPoint.y <= corners[2].y);
 
-        Debug.Log($"判定={chargeFlag}, マウス(CanvasLocal)={localPoint}, Charge範囲(CanvasLocal)=({corner0Local} - {corner2Local})");
-
+        Debug.Log($"判定: {chargeFlag}, マウス={localPoint}, Charge範囲=({corners[0]} - {corners[2]})");
 
         // Player の当たり判定（Collider 必須）
         bool playerFlag = false;

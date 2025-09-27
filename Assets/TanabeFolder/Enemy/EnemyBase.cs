@@ -18,6 +18,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     private GameObject death_effect;
 
+    public GameObject Attach_Player;
+
     [SerializeField]
     protected float move_speed = 5.0f;
 
@@ -102,6 +104,7 @@ public class EnemyBase : MonoBehaviour
                 int rand_weapon_num = UnityEngine.Random.Range(0, prefabWeapons.Count);
                 GameObject item = Instantiate(prefabWeapons[rand_weapon_num], slotsParent);
                 item.GetComponent<Item>().slotsParent = slotsParent;
+                item.GetComponent<Item>().player = Attach_Player;
                 Debug.Log("Weapon");
             }
 
