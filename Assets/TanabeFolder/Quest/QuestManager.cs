@@ -33,6 +33,8 @@ public class QuestManager : MonoBehaviour
     GameObject spiderUi;
     [SerializeField]
     GameObject frogUi;
+    [SerializeField]
+    AfterImageEffect player;
 
 
     //現在クエスト
@@ -59,6 +61,7 @@ public class QuestManager : MonoBehaviour
         Failed,
         Suceeded,
     }
+    [SerializeField]
     QuestState questState=QuestState.None;
 
     // Start is called before the first frame update
@@ -117,6 +120,12 @@ public class QuestManager : MonoBehaviour
             spiderUi.SetActive(false);
             mouseUi.SetActive(false);
         }
+
+        if (player.enabled == false && questState == QuestState.Suceeded)
+        {
+            player.enabled = true;
+        }
+
     }
 
     public void StartQuest()
