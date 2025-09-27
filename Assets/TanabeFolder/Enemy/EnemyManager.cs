@@ -27,6 +27,13 @@ public class EnemyManager : MonoBehaviour
     float current_time = 0.0f;
     [SerializeField]
     float seconds = 0.5f;
+    public void SetSeconds(float seconds) { this.seconds = seconds; }
+    [SerializeField]
+    int spown_amount = 5;
+    public void SetAmount(int amount) { spown_amount = amount; }
+    //補正値
+    float correction_value = 1.0f;
+    public void CorrectionValue(float amount) { correction_value = amount; }
 
     [SerializeField]
     ScoreScript score;
@@ -50,26 +57,34 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnRandomEnemy()
     {
-        // ランダムな敵の種類を選択
-        EnemyType selectedEnemy = SelectRandomEnemyType();
-        if (selectedEnemy != null)
+        for (int count = 0; count < spown_amount; count++)
         {
-            // 選択された敵を生成
-            GameObject newEnemy = Instantiate(selectedEnemy.enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity, transform);
 
-            // 基底クラスを使って、すべての敵に共通の振る舞いを指示
-            EnemyBase enemyComponent = newEnemy.GetComponent<EnemyBase>();
-            if (enemyComponent != null)
+            // ランダムな敵の種類を選択
+            EnemyType selectedEnemy = SelectRandomEnemyType();
+            if (selectedEnemy != null)
             {
-                enemyComponent.SetManager(this);
-                enemyComponent.SetPlayerTransform(player_transform);
+                // 選択された敵を生成
+                GameObject newEnemy = Instantiate(selectedEnemy.enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity, transform);
 
-                enemyComponent.SetOldHealth(enemyComponent.GetComponent<Health>().GetCurrentHealth());
-                enemyComponent.slotsParent = slots_transform;
-                enemyComponent.score = score;
-            }            
+                // 基底クラスを使って、すべての敵に共通の振る舞いを指示
+                EnemyBase enemyComponent = newEnemy.GetComponent<EnemyBase>();
+                if (enemyComponent != null)
+                {
+                    enemyComponent.SetManager(this);
+                    enemyComponent.SetPlayerTransform(player_transform);
+
+                    //HP設定
+                    Health enemy_health = enemyComponent.GetComponent<Health>();
+                    enemy_health.SetMaxHealth(enemy_health.GetMaxHealth() * correction_value);
+                    enemyComponent.SetOldHealth(enemy_health.GetCurrentHealth());
+
+                    enemyComponent.slotsParent = slots_transform;
+                    enemyComponent.score = score;
+                }
+            }
+
         }
-        
     }
 
     //重み付きで敵をランダム生成
@@ -98,11 +113,37 @@ public class EnemyManager : MonoBehaviour
     //ランダム位置取得
     private Vector3 GetRandomSpawnPosition()
     {
+        Vector3 spawnPosition = transform.position;
         // プレイヤーから(spawn_range_x,spawn_range_y)離れた位置に生成
-        return new Vector3(
-            player_transform.position.x + UnityEngine.Random.Range(spawn_range_min.x, spawn_range_max.y),
-            player_transform.position.y + UnityEngine.Random.Range(spawn_range_min.x, spawn_range_max.y),
-            0);
+        switch (UnityEngine.Random.Range(0, 3))
+        {
+            case 0:
+                spawnPosition= new Vector3(
+                    player_transform.position.x + spawn_range_min.x,
+                    player_transform.position.y + UnityEngine.Random.Range(spawn_range_min.y, spawn_range_max.y),
+                    0);
+                break;
+            case 1:
+                spawnPosition= new Vector3(
+                    player_transform.position.x + spawn_range_max.x,
+                    player_transform.position.y + UnityEngine.Random.Range(spawn_range_min.y, spawn_range_max.y),
+                    0);
+                break;
+            case 2:
+                spawnPosition= new Vector3(
+                    player_transform.position.x + UnityEngine.Random.Range(spawn_range_min.x, spawn_range_max.x),
+                    player_transform.position.y + spawn_range_min.y,
+                    0);
+                break;
+            case 3:
+                spawnPosition = new Vector3(
+                    player_transform.position.x + UnityEngine.Random.Range(spawn_range_min.x, spawn_range_max.x),
+                    player_transform.position.y + spawn_range_max.y,
+                    0);
+                break;
+        }
+
+        return spawnPosition;
     }
 
     //死亡カウント

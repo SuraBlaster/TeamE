@@ -6,6 +6,8 @@ public class Health : MonoBehaviour
 {
     [SerializeField]
     private float max_health = 100.0f;
+    public void SetMaxHealth(float max_health) { this.max_health = max_health; current_health = max_health; }
+    public float GetMaxHealth() { return this.max_health; }
     [SerializeField]
     private float current_health = 100.0f;
     [SerializeField]
