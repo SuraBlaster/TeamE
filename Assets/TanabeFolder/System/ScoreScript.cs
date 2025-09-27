@@ -15,7 +15,7 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,3 +24,4 @@ public class ScoreScript : MonoBehaviour
         score_text.text = string.Format("{0:D6}", score);
     }
 }
+
