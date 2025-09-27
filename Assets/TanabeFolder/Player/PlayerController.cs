@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,7 +21,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float axiz_x = 0.0f, axiz_y = 0.0f;
+        if (GetComponent<Health>().GetCurrentHealth() <= 0)
+            SceneManager.LoadScene("GameOver");
+            
+
+            float axiz_x = 0.0f, axiz_y = 0.0f;
 
         //YŽ²ˆÚ“®
         if (Input.GetKey(KeyCode.W))

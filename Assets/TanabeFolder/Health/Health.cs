@@ -25,10 +25,10 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(current_health<=0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
+        //if(current_health<=0)
+        //{
+        //    SceneManager.LoadScene("GameOver");
+        //}
     }
 
     //ƒ_ƒ[ƒW‚ð—^‚¦‚é
