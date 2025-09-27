@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimerUIScript : MonoBehaviour
@@ -22,6 +23,12 @@ public class TimerUIScript : MonoBehaviour
     {
         current_time += Time.deltaTime;
         timer_image.fillAmount = 1.0f - (current_time / total_time);
+    
+        if(total_time< current_time)
+        {
+            SceneManager.LoadScene("GameClear");
+
+        }
     }
 
     public float GetCurrentTime() { return current_time; }

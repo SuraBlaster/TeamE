@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -24,7 +25,10 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(current_health<=0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     //ƒ_ƒ[ƒW‚ð—^‚¦‚é
